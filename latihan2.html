@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTIK FKIP UNS</title>
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: black;
+            font-size: 28px;
+        }
+
+        p {
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.6;
+            color: black;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 8px 16px;
+            background-color: #f0f0f0;
+            border: 1px solid #888;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        .highlight {
+            background-color: yellow;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>PTIK FKIP UNS</h1>
+    <p id="paragraf">
+        The Faculty of Teacher Training and Education, Sebelas Maret University, Surakarta is an 
+        Educational Personnel Education Institution (LPTK) which has 24 study programs in 6 majors. 
+        Each study program has its own characteristics in producing superior, strong and intelligent educational staff. <br><br>
+
+        The Informatics and Computer Technology Education (PTIK) study program is planned to take shelter 
+        in the management of the Engineering and Vocational Education (PTK) department. This placement revises 
+        our previous statement, where the PTIK study program is under the P.MIPA department. PTIK is a study program 
+        that will produce graduates who are prioritized to teach in vocational/vocational programs. So, it would be 
+        better if PTIK was under the PTK department which oversees vocational programs such as Building Engineering 
+        Education, and Mechanical Engineering Education. To meet the needs of lecturers in the field of information 
+        technology that cannot be met by the PTK department, PTIK will conduct resource sharing with the mathematics study program.
+    </p>
+
+    <button id="btnHighlight">Highlight Paragraf</button>
+
+    <script>
+        let highlighted = false;
+        const paragraf = document.getElementById("paragraf");
+        const originalHTML = paragraf.innerHTML;
+
+        function highlightText() {
+            if (!highlighted) {
+                let teks = originalHTML;
+                
+                teks = teks.replace(
+                    "The Faculty of Teacher Training and Education, Sebelas Maret University, Surakarta is an Educational Personnel Education Institution (LPTK)",
+                    "<span class='highlight'>The Faculty of Teacher Training and Education, Sebelas Maret University, Surakarta is an Educational Personnel Education Institution (LPTK)</span>"
+                );
+
+                teks = teks.replace(
+                    "Each study program has its own characteristics in producing superior, strong and intelligent educational staff",
+                    "<span class='highlight'>Each study program has its own characteristics in producing superior, strong and intelligent educational staff</span>"
+                );
+
+                teks = teks.replace(
+                    "The Informatics and Computer Technology Education (PTIK) study program is planned to take shelter in the management of the Engineering and Vocational Education (PTK) department",
+                    "<span class='highlight'>The Informatics and Computer Technology Education (PTIK) study program is planned to take shelter in the management of the Engineering and Vocational Education (PTK) department</span>"
+                );
+
+                teks = teks.replace(
+                    "PTIK is a study program that will produce graduates who are prioritized to teach in vocational/vocational programs",
+                    "<span class='highlight'>PTIK is a study program that will produce graduates who are prioritized to teach in vocational/vocational programs</span>"
+                );
+
+                teks = teks.replace(
+                    "PTIK will conduct resource sharing with the mathematics study program",
+                    "<span class='highlight'>PTIK will conduct resource sharing with the mathematics study program</span>"
+                );
+
+                paragraf.innerHTML = teks;
+                highlighted = true;
+                document.getElementById("btnHighlight").textContent = "Hapus Highlight";
+            } else {
+                paragraf.innerHTML = originalHTML;
+                highlighted = false;
+                document.getElementById("btnHighlight").textContent = "Highlight Paragraf";
+            }
+        }
+
+        document.getElementById("btnHighlight").addEventListener("click", highlightText);
+    </script>
+</body>
+</html>
